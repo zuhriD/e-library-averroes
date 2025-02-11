@@ -48,7 +48,7 @@ class BookController extends Controller
         if($request->hasFile('cover')){
             $imageName = time().'.'.$request->file('cover')->getClientOriginalExtension();
               
-             $request->file('cover')->storeAs('public/uploads', $imageName);
+             $request->cover->move(public_path('images'), $imageName);
             Book::create([
                 'title' => $request->title,
                 'author' => $request->author,
