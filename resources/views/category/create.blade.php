@@ -1,6 +1,6 @@
-
-<?php $__env->startSection('title', 'Books'); ?>
-<?php $__env->startSection('content'); ?>
+@extends('layouts.base')
+@section('title', 'Books')
+@section('content')
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 mt-3">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
         <!-- Start coding here -->
@@ -8,8 +8,8 @@
             <section class="bg-white dark:bg-gray-900">
                 <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
                     <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add Book</h2>
-                    <form action="<?php echo e(route('books.store')); ?>" method="POST" enctype="multipart/form-data">
-                        <?php echo csrf_field(); ?>
+                    <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="grid gap-4 sm:grid-cols-3 sm:gap-6">
                             <div class="sm:col-span-2">
                                 <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -45,9 +45,9 @@
                                 <select name="category" id="category"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     <option value="">Pilih Category</option>
-                                    <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    @foreach($category as $category )
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
                                 </select>
 
                             </div>
@@ -96,5 +96,4 @@
 </script>
 
 
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\AVERROS\RPL KELAS 11\Sem 2\e-library-averroes\resources\views/book/create.blade.php ENDPATH**/ ?>
+@endsection

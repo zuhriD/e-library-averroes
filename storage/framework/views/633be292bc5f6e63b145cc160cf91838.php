@@ -87,6 +87,7 @@
                             <th scope="col" class="px-4 py-3">Nama Buku </th>
                             <th scope="col" class="px-4 py-3">Author </th>
                             <th scope="col" class="px-4 py-3">ISBN </th>
+                            <th scope="col" class="px-4 py-3">Category </th>
                             <th scope="col" class="px-4 py-3">Cover </th>
 
                             <th scope="col" class="px-4 py-3 flex items-center justify-center">
@@ -100,8 +101,9 @@
                             <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"><?php echo e($book->title); ?></th>
                             <td class="px-4 py-3"><?php echo e($book->author); ?></td>
                             <td class="px-4 py-3"><?php echo e($book->isbn); ?></td>
+                            <td class="px-4 py-3"><?php echo e($book->category->name); ?></td>
                             <td class="px-4 py-3">
-                                <img src="<?php echo e(asset('storage/uploads/' . $book->cover)); ?>" alt="">
+                                <img src="<?php echo e(asset('images/' . $book->cover)); ?>" alt="">
                             </td>
 
                             <td class="px-4 py-3 flex items-center justify-center">

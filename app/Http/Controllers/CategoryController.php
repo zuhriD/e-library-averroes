@@ -15,7 +15,7 @@ class CategoryController extends Controller
     {
         //
         $categories = Category::all();
-        return view('categories.index', compact('categories'));
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -24,7 +24,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        return view('categories.create');
+        return view('category.create');
     }
 
     /**
@@ -38,7 +38,7 @@ class CategoryController extends Controller
         ]);
 
         if(Category::create($category)){
-            return redirect()->route('categories.index')->with('success', 'Category created successfully');
+            return redirect()->route('category.index')->with('success', 'Category created successfully');
         }
         return back()->with('error', 'Something went wrong');
     }
@@ -50,7 +50,7 @@ class CategoryController extends Controller
     {
         //
 
-        return view('categories.show', compact('category'));
+        return view('category.show', compact('category'));
 
     }
 
@@ -74,7 +74,7 @@ class CategoryController extends Controller
         ]);
 
         if($category->update($request->all())){
-            return redirect()->route('categories.index')->with('success', 'Category updated successfully');
+            return redirect()->route('category.index')->with('success', 'Category updated successfully');
         }
         return back()->with('error', 'Something went wrong');
     }
@@ -86,7 +86,7 @@ class CategoryController extends Controller
     {
         //
         if($category->delete()){
-            return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
+            return redirect()->route('category.index')->with('success', 'Category deleted successfully');
         }
     }
 }

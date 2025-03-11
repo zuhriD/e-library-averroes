@@ -18,11 +18,14 @@ Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.masuk')
 Route::post('/auth/logout', [AuthController::class, 'logout'])->name('auth.keluar');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', function () {
-        return view('home');
-    })->name('home');
-
+    
+    Route::middleware('role:admin|user')->group(function () {
+        Route::get('/home', function () {
+            return view('home');
+        })->name('home');
+        Route::resource('books', BookController::class);
+    });
     Route::resource('users', UserController::class);
     Route::resource('categories', CategoryController::class);
-    Route::resource('books', BookController::class);
+    
 });

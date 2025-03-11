@@ -1,6 +1,6 @@
-@extends('layouts.base')
-@section('title', 'Books')
-@section('content')
+
+<?php $__env->startSection('title', 'Books'); ?>
+<?php $__env->startSection('content'); ?>
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 mt-3">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
         <!-- Start coding here -->
@@ -20,11 +20,11 @@
                     </form>
                 </div>
                 <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                    <a href="{{ route('books.create') }}" class="flex items-center justify-center text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gren-600 dark:hover:bg-green-600 focus:outline-none dark:focus:ring-green-600">
+                    <a href="<?php echo e(route('books.create')); ?>" class="flex items-center justify-center text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gren-600 dark:hover:bg-green-600 focus:outline-none dark:focus:ring-green-600">
                         <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
                         </svg>
-                        Add Book
+                        Add Category
                     </a>
                     <div class="flex items-center space-x-3 w-full md:w-auto">
                         <button id="actionsDropdownButton" data-dropdown-toggle="actionsDropdown" class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" type="button">
@@ -84,11 +84,7 @@
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-4 py-3">Nama Buku </th>
-                            <th scope="col" class="px-4 py-3">Author </th>
-                            <th scope="col" class="px-4 py-3">ISBN </th>
-                            <th scope="col" class="px-4 py-3">Category </th>
-                            <th scope="col" class="px-4 py-3">Cover </th>
+                            <th scope="col" class="px-4 py-3">Nama Kategori </th>
 
                             <th scope="col" class="px-4 py-3 flex items-center justify-center">
                                 Actions
@@ -96,15 +92,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($book as $book)
+                        <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr class="border-b dark:border-gray-700">
-                            <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $book->title }}</th>
-                            <td class="px-4 py-3">{{ $book->author }}</td>
-                            <td class="px-4 py-3">{{ $book->isbn }}</td>
-                            <td class="px-4 py-3">{{ $book->category->name }}</td>
-                            <td class="px-4 py-3">
-                                <img src="{{ asset('images/' . $book->cover) }}" alt="">
-                            </td>
+                            <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"><?php echo e($item->name); ?></th>
 
                             <td class="px-4 py-3 flex items-center justify-center">
                                 <button id="apple-imac-27-dropdown-button" data-dropdown-toggle="apple-imac-27-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
@@ -127,7 +117,7 @@
                                 </div>
                             </td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 </table>
             </div>
@@ -177,4 +167,5 @@
 </section>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.base', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\AVERROS\RPL KELAS 11\Sem 2\e-library-averroes\resources\views\category\index.blade.php ENDPATH**/ ?>

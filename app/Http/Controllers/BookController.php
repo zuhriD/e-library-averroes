@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 
 class BookController extends Controller
 {
@@ -71,6 +72,9 @@ class BookController extends Controller
     public function show(Book $book)
     {
         //
+        $book = Book::with('category')->find($book->id);
+        $category = Category::all();
+        return view('book.edit', compact('book', 'category'));
     }
 
     /**
