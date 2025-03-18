@@ -103,7 +103,7 @@
                             <td class="px-4 py-3">{{ $book->isbn }}</td>
                             <td class="px-4 py-3">{{ $book->category->name }}</td>
                             <td class="px-4 py-3">
-                                <img src="{{ asset('images/' . $book->cover) }}" alt="">
+                                <img src="{{ asset('images/' . $book->cover) }}" alt="" class="w-20 h-auto rounded-lg">
                             </td>
 
                             <td class="px-4 py-3 flex items-center justify-center">

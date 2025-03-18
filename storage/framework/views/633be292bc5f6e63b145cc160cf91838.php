@@ -103,7 +103,7 @@
                             <td class="px-4 py-3"><?php echo e($book->isbn); ?></td>
                             <td class="px-4 py-3"><?php echo e($book->category->name); ?></td>
                             <td class="px-4 py-3">
-                                <img src="<?php echo e(asset('images/' . $book->cover)); ?>" alt="">
+                                <img src="<?php echo e(asset('images/' . $book->cover)); ?>" alt="" class="w-20 h-auto rounded-lg">
                             </td>
 
                             <td class="px-4 py-3 flex items-center justify-center">

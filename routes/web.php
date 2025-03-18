@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,8 +25,12 @@ Route::middleware(['auth'])->group(function () {
             return view('home');
         })->name('home');
         Route::resource('books', BookController::class);
+        Route::get('book/user', [BookController::class, 'userBook'])->name('book.user');
+        Route::resource('peminjamans', PeminjamanController::class);
     });
-    Route::resource('users', UserController::class);
-    Route::resource('categories', CategoryController::class);
+    Route::middleware('role:admin')->group(function () {
+        Route::resource('users', UserController::class);
+        Route::resource('categories', CategoryController::class);
+    });
     
 });

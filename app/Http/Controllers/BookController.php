@@ -100,4 +100,9 @@ class BookController extends Controller
     {
         //
     }
+
+    public function userBook(){
+        $book = Book::with('category')->get();
+        return view('book.user_book', compact('book'));
+    }
 }
